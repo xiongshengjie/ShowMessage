@@ -23,6 +23,10 @@ public class HttpGet {
                 .url(url)
                 .build();
 
+        Response response = null;
+
+
+
         new Thread(){
             @Override
             public void run() {

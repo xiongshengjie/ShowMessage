@@ -31,6 +31,7 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHold
 
         ImageView generalHead;
         TextView generalTime,generalBehave,generalSpaceName;
+        View topDash;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -38,6 +39,7 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHold
             generalBehave = (TextView) itemView.findViewById(R.id.general_behave);
             generalSpaceName = (TextView) itemView.findViewById(R.id.general_space_name);
             generalTime = (TextView) itemView.findViewById(R.id.general_time);
+            topDash = itemView.findViewById(R.id.top_dash);
         }
     }
 
@@ -77,6 +79,10 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHold
                 .transform(new GlideCircleTransform(context))
                 .animate(R.anim.little_to_large)
                 .into(holder.generalHead);
+
+        if(position == 0){
+            holder.topDash.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

@@ -94,11 +94,10 @@ public class MainActivity extends Activity {
                 @Override
                 public void run() {
                     generalAdapter.setGeneralList(generalList);
-
-                    new HttpGet().getData(ServerUrl.GET_GENERAL_DATA,new GeneralCallBack());
                 }
             });
 
+            new HttpGet().getData(ServerUrl.GET_GENERAL_DATA,new GeneralCallBack());
 
         }
 
@@ -121,9 +120,10 @@ public class MainActivity extends Activity {
                 public void run() {
                     newFollowAdapter.setNewList(newFollowList);
 
-                    new HttpGet().getData(ServerUrl.GET_NEW_USER,new NewCallBack());
                 }
             });
+
+            new HttpGet().getData(ServerUrl.GET_NEW_USER,new NewCallBack());
 
         }
         @Override
@@ -145,9 +145,10 @@ public class MainActivity extends Activity {
                 public void run() {
                     newScanAdapter.setNewList(newScanList);
 
-                    new HttpGet().getData(ServerUrl.GET_NEW_SCAN,new NewScanCallBack());
                 }
             });
+
+            new HttpGet().getData(ServerUrl.GET_NEW_SCAN,new NewScanCallBack());
 
         }
         @Override
@@ -169,9 +170,10 @@ public class MainActivity extends Activity {
                 public void run() {
                     newPayAdapter.setNewList(newPayList);
 
-                    new HttpGet().getData(ServerUrl.GET_NEW_ORDER,new NewPayCallBack());
                 }
             });
+
+            new HttpGet().getData(ServerUrl.GET_NEW_ORDER,new NewPayCallBack());
 
         }
         @Override
