@@ -14,46 +14,18 @@ import okhttp3.Response;
 
 public class HttpGet {
 
-    private static final OkHttpClient client = new OkHttpClient();
-    public void getData(String url,final HttpCallBack callBack){
+    public static final OkHttpClient client = new OkHttpClient();
+
+    public static void getData(String url, final HttpCallBack callBack) {
 
         final Request request = new Request.Builder()
                 .get()
-                .tag(this)
                 .url(url)
                 .build();
 
-        Response response = null;
 
+        NetThead thread = new NetThead(request, callBack);
+        thread.start();
 
-
-        new Thread(){
-            @Override
-            public void run() {
-                Response response = null;
-
-                Call call = null;
-
-                try {
-                    call = client.newCall(request);
-                    response = call.execute();
-                    if (response.isSuccessful()) {
-                        callBack.onSuccess(response.body().string());
-                    }else {
-                        String message = "错误："+response;
-                        callBack.onFail(message);
-                    }
-                }catch (IOException e){
-                    callBack.onFail("connect reset");
-                }finally {
-                    if(call != null){
-                        call.cancel();
-                    }
-                    if(response != null){
-                        response.close();
-                    }
-                }
-            }
-        }.start();
     }
 }

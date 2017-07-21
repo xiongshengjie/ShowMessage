@@ -6,7 +6,7 @@ package cn.xiong.showmessage.http;
 
 public interface HttpCallBack {
 
-    void onSuccess(String json);
+    void onSuccess(String json,NetThead thread);
 
-    void onFail(String message);
+    void onFail(String message,NetThead thread);
 }
