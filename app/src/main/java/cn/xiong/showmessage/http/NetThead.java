@@ -14,7 +14,6 @@ public class NetThead extends Thread {
 
     private Request request;
     private HttpCallBack callBack;
-    private boolean isInterrupted = false;
 
     public NetThead(Request request,HttpCallBack callBack){
         this.request = request;
@@ -22,17 +21,10 @@ public class NetThead extends Thread {
     }
 
     @Override
-    public void interrupt() {
-        isInterrupted = true;
-        super.interrupt();
-    }
-
-    @Override
     public void run() {
         Response response = null;
 
         Call call = null;
-        while (!this.isInterrupted) {
             try {
                 call = HttpGet.client.newCall(request);
                 response = call.execute();
@@ -52,6 +44,5 @@ public class NetThead extends Thread {
                     response.close();
                 }
             }
-        }
     }
 }

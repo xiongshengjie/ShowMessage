@@ -141,8 +141,6 @@ public class MainActivity extends Activity {
             msg.arg1 = 0;
 
             handler.sendMessage(msg);
-
-            NetThead.interrupt();
         }
 
         @Override
@@ -152,9 +150,6 @@ public class MainActivity extends Activity {
             msg.arg1 = 1;
 
             handler.sendMessage(msg);
-
-            NetThead.interrupt();
-
         }
     }
 
@@ -171,9 +166,6 @@ public class MainActivity extends Activity {
             msg.arg1 = 0;
 
             handler.sendMessage(msg);
-
-            NetThead.interrupt();
-
         }
         @Override
         public void onFail(String message,NetThead NetThead) {
@@ -183,7 +175,6 @@ public class MainActivity extends Activity {
             msg.arg1 = 1;
 
             handler.sendMessage(msg);
-            NetThead.interrupt();
         }
     }
 
@@ -199,9 +190,6 @@ public class MainActivity extends Activity {
             msg.arg1 = 0;
 
             handler.sendMessage(msg);
-
-            NetThead.interrupt();
-
         }
         @Override
         public void onFail(String message,NetThead NetThead) {
@@ -210,8 +198,6 @@ public class MainActivity extends Activity {
             msg.arg1 = 1;
 
             handler.sendMessage(msg);
-
-            NetThead.interrupt();
         }
     }
 
@@ -227,9 +213,6 @@ public class MainActivity extends Activity {
             msg.arg1 = 0;
 
             handler.sendMessage(msg);
-
-            NetThead.interrupt();
-
         }
         @Override
         public void onFail(String message,NetThead NetThead) {
@@ -238,8 +221,7 @@ public class MainActivity extends Activity {
             msg.arg1 = 1;
 
             handler.sendMessage(msg);
-
-            NetThead.interrupt();
+            
         }
     }
 
