@@ -8,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -92,6 +95,10 @@ public class MainActivity extends Activity {
         newFollowView = (RecyclerView) findViewById(R.id.new_follow_view);
         newScanView = (RecyclerView) findViewById(R.id.new_scan_view);
         newPayView = (RecyclerView) findViewById(R.id.new_pay_view);
+
+        View view = View.inflate(this,R.layout.activity_main,null);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.star_background);
+        view.startAnimation(animation);
 
         LinearLayoutManager leftLinearLayoutManager = new LinearLayoutManager(this);
         leftView.setLayoutManager(leftLinearLayoutManager);
