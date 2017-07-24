@@ -1,5 +1,7 @@
 package cn.xiong.showmessage.activity;
 
+import android.animation.AnimatorSet;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -7,6 +9,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -91,6 +99,17 @@ public class TestActivity extends BaseActivity {
         newPayView.setAdapter(newPayAdapter);
         ((SimpleItemAnimator)newPayView.getItemAnimator()).setSupportsChangeAnimations(false);
 
+        ImageView imageViewTop = (ImageView) findViewById(R.id.star_back);
+        ImageView imageViewBottom = (ImageView) findViewById(R.id.star_back_bottom);
+        Animation animationTop = AnimationUtils.loadAnimation(this,R.anim.star_background);
+        Animation animationBottom = AnimationUtils.loadAnimation(this,R.anim.star_back);
+
+        imageViewTop.startAnimation(animationTop);
+        imageViewBottom.startAnimation(animationBottom);
+
+        ImageView background = (ImageView) findViewById(R.id.background);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.background);
+        background.startAnimation(animation);
     }
 
     public void requestData(){
