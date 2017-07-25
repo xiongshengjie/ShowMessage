@@ -31,6 +31,9 @@ import cn.xiong.showmessage.entity.BaseEntity;
 import cn.xiong.showmessage.entity.General;
 import cn.xiong.showmessage.entity.New;
 import cn.xiong.showmessage.http.HttpGet;
+import cn.xiong.showmessage.utils.BaseNewFollowTask;
+import cn.xiong.showmessage.utils.BaseNewPayTask;
+import cn.xiong.showmessage.utils.BaseNewScanTask;
 import cn.xiong.showmessage.utils.BaseTask;
 import cn.xiong.showmessage.utils.HttpOperate;
 
@@ -49,6 +52,9 @@ public class TestActivity extends BaseActivity {
     private GeneralAdapter generalAdapter;
     private NewAdapter newFollowAdapter,newScanAdapter,newPayAdapter;
     private BaseTask task;
+    private BaseNewFollowTask newFollowTask;
+    private BaseNewScanTask newScanTask;
+    private BaseNewPayTask newPayTask;
     private String resultGeneral,resultNewScan,resultNewPay,resultNewFollow;
     private BaseEntity<General> generalBaseEntity = null;
     private BaseEntity<New> newBaseEntity = null;
@@ -63,6 +69,9 @@ public class TestActivity extends BaseActivity {
 
         initView();
         requestData();
+        requestNewFollowData();
+        requestNewScanData();
+        requestNewPayData();
 
     }
 
@@ -115,17 +124,47 @@ public class TestActivity extends BaseActivity {
     public void requestData(){
         task = new BaseTask(this);
         task.execute();
+
+    }
+
+    public void requestNewFollowData(){
+        newFollowTask = new BaseNewFollowTask(this);
+        newFollowTask.execute();
+    }
+
+    public void requestNewScanData(){
+        newScanTask = new BaseNewScanTask(this);
+        newScanTask.execute();
+    }
+
+    public void requestNewPayData(){
+        newPayTask = new BaseNewPayTask(this);
+        newPayTask.execute();
     }
 
     @Override
     public Object doLongTsk() {
 
         resultGeneral = HttpOperate.getInstance().HttpGet(ServerUrl.GET_GENERAL_DATA);
-        resultNewFollow = HttpOperate.getInstance().HttpGet(ServerUrl.GET_NEW_USER);
-        resultNewPay = HttpOperate.getInstance().HttpGet(ServerUrl.GET_NEW_ORDER);
-        resultNewScan = HttpOperate.getInstance().HttpGet(ServerUrl.GET_NEW_SCAN);
-
         return null;
+    }
+
+    @Override
+    public Object doLongNewFollowTask() {
+        resultNewFollow = HttpOperate.getInstance().HttpGet(ServerUrl.GET_NEW_USER);
+        return null;
+    }
+
+    @Override
+    public Object doLongNewScanTask() {
+        resultNewScan = HttpOperate.getInstance().HttpGet(ServerUrl.GET_NEW_SCAN);
+        return null;
+    }
+
+    @Override
+    public Object doLongNewPayTask() {
+        resultNewPay = HttpOperate.getInstance().HttpGet(ServerUrl.GET_NEW_ORDER);
+        return super.doLongNewPayTask();
     }
 
     @Override
@@ -137,33 +176,46 @@ public class TestActivity extends BaseActivity {
             generalList = generalBaseEntity.getData();
             generalAdapter.setGeneralList(generalList);
         }
-
-        if(!TextUtils.isEmpty(resultNewFollow)) {
-            newBaseEntity = gson.fromJson(resultNewFollow, new TypeToken<BaseEntity<New>>() {}.getType());
-            newFollowList = newBaseEntity.getData();
-            newFollowAdapter.setNewList(newFollowList);
-        }
-
-
-        if (!TextUtils.isEmpty(resultNewScan)) {
-            newBaseEntity = gson.fromJson(resultNewScan, new TypeToken<BaseEntity<New>>() {}.getType());
-            newScanList = newBaseEntity.getData();
-            newScanAdapter.setNewList(newScanList);
-        }
-
-        if(!TextUtils.isEmpty(resultNewPay)) {
-            newBaseEntity = gson.fromJson(resultNewPay, new TypeToken<BaseEntity<New>>() {}.getType());
-            newPayList = newBaseEntity.getData();
-            newPayAdapter.setNewList(newPayList);
-        }
-
         requestData();
 
     }
 
     @Override
+    public void updateNewFollowUI(Object result) {
+        if(!TextUtils.isEmpty(resultNewFollow)) {
+            newBaseEntity = gson.fromJson(resultNewFollow, new TypeToken<BaseEntity<New>>() {}.getType());
+            newFollowList = newBaseEntity.getData();
+            newFollowAdapter.setNewList(newFollowList);
+        }
+        requestNewFollowData();
+    }
+
+    @Override
+    public void updateNewScanUI(Object result) {
+        if (!TextUtils.isEmpty(resultNewScan)) {
+            newBaseEntity = gson.fromJson(resultNewScan, new TypeToken<BaseEntity<New>>() {}.getType());
+            newScanList = newBaseEntity.getData();
+            newScanAdapter.setNewList(newScanList);
+        }
+        requestNewScanData();
+    }
+
+    @Override
+    public void updateNewPayUI(Object result) {
+        if(!TextUtils.isEmpty(resultNewPay)) {
+            newBaseEntity = gson.fromJson(resultNewPay, new TypeToken<BaseEntity<New>>() {}.getType());
+            newPayList = newBaseEntity.getData();
+            newPayAdapter.setNewList(newPayList);
+        }
+        requestNewPayData();
+    }
+
+    @Override
     protected void onStop() {
         task.cancel(true);
+        newFollowTask.cancel(true);
+        newScanTask.cancel(true);
+        newPayTask.cancel(true);
         super.onStop();
     }
 }

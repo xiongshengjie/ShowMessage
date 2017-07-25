@@ -14,7 +14,31 @@ public class BaseActivity extends Activity {
         return null;
     }
 
+    public Object doLongNewFollowTask(){
+        return null;
+    }
+
+    public Object doLongNewScanTask(){
+        return null;
+    }
+
+    public Object doLongNewPayTask(){
+        return null;
+    }
+
     public void updateUI(Object result){
+
+    }
+
+    public void updateNewFollowUI(Object result){
+
+    }
+
+    public void updateNewScanUI(Object result){
+
+    }
+
+    public void updateNewPayUI(Object result){
 
     }
 
