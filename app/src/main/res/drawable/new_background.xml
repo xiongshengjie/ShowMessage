@@ -14,9 +14,8 @@
     *****/
     <!-- 渐变 -->
     <gradient
-        android:startColor="@android:color/holo_blue_dark"
-        android:centerColor="@android:color/holo_blue_light"
-        android:endColor="@android:color/holo_blue_bright"
+        android:startColor="@color/right_start"
+        android:endColor="@color/right_stop"
         android:type="linear"
         android:angle="90"/>
 

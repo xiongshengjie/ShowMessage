@@ -9,6 +9,7 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:textColor="@android:color/white"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -50,6 +51,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
+        android:layout_marginRight="25dp"
         android:background="@drawable/left_background">
 
         <TextView
@@ -58,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:textSize="20sp"
+            android:textColor="@android:color/white"
             android:layout_gravity="center_vertical"
             android:paddingLeft="30dp" />
 
@@ -68,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="right"
+            android:textColor="@android:color/white"
             android:padding="10dp" />
     </LinearLayout>
 

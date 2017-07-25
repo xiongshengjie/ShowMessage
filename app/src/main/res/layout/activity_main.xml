@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/realtime"
     tools:context="cn.xiong.showmessage.MainActivity">
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/back"
+        android:background="@drawable/star"
         android:layout_marginLeft="-50dp"
         android:layout_marginRight="-300dp"
         android:scaleType="centerCrop"  />
@@ -21,14 +22,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/shootingstar"/>
 
     <ImageView
         android:id="@+id/star_back_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/shootingstar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,17 +39,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="50dp"
+                    android:background="@drawable/realtime_logo"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="50dp"
+                    android:paddingBottom="50dp"
+                    android:paddingRight="50dp"
+                    android:paddingLeft="15dp"
                     android:textSize="50sp"
-                    android:text="实时行为动态"
-                    />
+                    android:textColor="@android:color/white"
+                    android:text="实时行为动态" />
 
             </LinearLayout>
 
@@ -82,12 +90,15 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    android:paddingLeft="25dp"
                     android:layout_weight="1">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="50dp"
+                        android:background="@drawable/new_background"
                         android:orientation="vertical">
 
                         <TextView
@@ -99,7 +110,7 @@
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/new_follow_view"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -109,6 +120,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="50dp"
+                        android:background="@drawable/new_background"
                         android:orientation="vertical">
 
                         <TextView
@@ -128,6 +141,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:layout_marginBottom="50dp"
+                        android:background="@drawable/new_background"
                         android:orientation="vertical">
 
                         <TextView
