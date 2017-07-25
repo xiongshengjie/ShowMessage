@@ -67,7 +67,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.ViewHolder> {
                 .with(context)
                 .load(person.getHeadImgUrl())
                 .centerCrop()
-                .error(R.mipmap.ic_launcher)
+                .error(R.drawable.default_small)
                 .transform(new GlideCircleTransform(context))
                 .animate(R.anim.little_to_large)
                 .into(holder.newImage);

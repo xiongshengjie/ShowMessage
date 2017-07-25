@@ -2,6 +2,7 @@ package cn.xiong.showmessage.adpter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -78,7 +79,7 @@ public class GeneralAdapter extends RecyclerView.Adapter<GeneralAdapter.ViewHold
                 .with(context)
                 .load(general.getHeadImgUrl())
                 .centerCrop()
-                .error(R.mipmap.ic_launcher)
+                .error(R.drawable.default_small)
                 .transform(new GlideCircleTransform(context))
                 .animate(R.anim.little_to_large)
                 .into(holder.generalHead);
